@@ -201,6 +201,49 @@ void APUECIntegratedSystem::handlePlayerRegistrationMenu() {
         
     } while (choice != 7);
 }
+void APUECIntegratedSystem::handleMatchSchedulingMenu() {
+    int choice;
+
+    do {
+        cout << "\n=== MATCH SCHEDULING & TOURNAMENT (Task 1) ===\n";
+        cout << "Data Structure Used: Stack, Queue, Priority Queue, Circular Queue\n";
+        cout << string(65, '-') << "\n";
+        cout << "1. Start Tournament (Process Teams)\n";
+        cout << "2. View Tournament Status\n";
+        cout << "3. Back to Main Menu\n";
+        cout << "Choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                if (!isRegistrationActive) {
+                    cout << "Starting tournament with registered teams...\n";
+                    matchScheduler->startTournament("teams.csv");
+                    isTournamentActive = true;
+                    cout << "Tournament completed! Check Statistics menu for results.\n";
+                } else {
+                    cout << "Error: Please close team registration first!\n";
+                }
+                break;
+
+            case 2:
+                cout << "Tournament Status: " << (isTournamentActive ? "Completed" : "Not Started") << "\n";
+                cout << "Registration Status: " << (isRegistrationActive ? "Open" : "Closed") << "\n";
+                break;
+
+            case 3:
+                cout << "Returning to main menu...\n";
+                break;
+
+            default:
+                cout << "Invalid option!\n";
+                break;
+        }
+
+        if (choice != 3) waitForUserInput();
+
+    } while (choice != 3);
+}
 
 void APUECIntegratedSystem::handleSpectatorManagementMenu() {
     int choice;
