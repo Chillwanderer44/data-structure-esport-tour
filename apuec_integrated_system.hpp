@@ -12,15 +12,7 @@
 
 using namespace std;
 
-/**
- * APUEC Integrated Tournament Management System
- * 
- * This system combines all four tasks into one cohesive tournament management platform:
- * - Task 1: Match Scheduling & Player Progression (MatchScheduler)
- * - Task 2: Tournament Registration & Player Queueing (RegistrationManager + RegistrationSystem)  
- * - Task 3: Live Stream & Spectator Queue Management (SpectatorManager)
- * - Task 4: Game Result Logging & Performance History (Statistics)
- */
+// Integrated System Class
 class APUECIntegratedSystem {
 private:
     // Task managers

@@ -6,10 +6,10 @@
  * Assignment: Lab Evaluation Work #2
  * 
  * Team Members & Tasks:
- * - Task 1: Match Scheduling & Player Progression [Member 1]
- * - Task 2: Tournament Registration & Player Queueing [Member 2] 
- * - Task 3: Live Stream & Spectator Queue Management [Your Name]
- * - Task 4: Game Result Logging & Performance History [Member 4]
+ * - Task 1: Match Scheduling & Player Progression [Daniel]
+ * - Task 2: Tournament Registration & Player Queueing [Rin] 
+ * - Task 3: Live Stream & Spectator Queue Management [Amir]
+ * - Task 4: Game Result Logging & Performance History [Daniel]
  *
  * Data Structures Used: Stack, Queue, Priority Queue, Circular Queue
  */

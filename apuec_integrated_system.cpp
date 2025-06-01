@@ -47,10 +47,10 @@ void APUECIntegratedSystem::displaySystemStatus() {
 
 void APUECIntegratedSystem::displayTaskCredits() {
     cout << "\n--- DEVELOPMENT TEAM ---\n";
-    cout << "Task 1 (Match Scheduling): [Team Member 1 - Stack, Queue, Priority Queue, Circular Queue]\n";
-    cout << "Task 2 (Registration): [Team Member 2 - Queue, Stack, Circular Queue, Priority Queue]\n";
-    cout << "Task 3 (Spectator Management): [Your Name - Priority Queue Implementation]\n";
-    cout << "Task 4 (Statistics & History): [Team Member 4 - Stack for Match History]\n";
+    cout << "Task 1 (Match Scheduling): [Daniel - Stack, Queue, Priority Queue, Circular Queue]\n";
+    cout << "Task 2 (Registration): [Rin - Queue, Stack, Circular Queue, Priority Queue]\n";
+    cout << "Task 3 (Spectator Management): [Amir - Priority Queue Implementation]\n";
+    cout << "Task 4 (Statistics & History): [Daniel - Stack for Match History]\n";
     cout << string(70, '-') << "\n";
 }
 
@@ -208,7 +208,7 @@ void APUECIntegratedSystem::handleSpectatorManagementMenu() {
     do {
         cout << "\n=== SPECTATOR MANAGEMENT SYSTEM (Task 3) ===\n";
         cout << "Data Structure Used: Priority Queue (Max Heap Implementation)\n";
-        cout << "Developer: [Your Name] - Priority Queue Specialist\n";
+        
         cout << string(65, '-') << "\n";
         cout << "1. Register New Spectator\n";
         cout << "2. Allocate Seating (Process Priority Queue)\n";
