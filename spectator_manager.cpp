@@ -417,9 +417,10 @@ void SpectatorManager::displayMenu() {
     cout << "5. Display Venue Status\n";
     cout << "6. Display System Statistics\n";
     cout << "7. Save Data to File\n";
-    cout << "8. Exit System\n";
+    cout << "8. Load Data from File\n";  // NEW OPTION
+    cout << "9. Exit System\n";
     cout << string(50, '-') << "\n";
-    cout << "Enter your choice (1-8): ";
+    cout << "Enter your choice (1-9): ";
 }
 
 void SpectatorManager::runSystem() {
@@ -454,22 +455,27 @@ void SpectatorManager::runSystem() {
                 displayStatistics();
                 break;
             case 7:
-                cout << "Enter filename (e.g., spectators.csv): ";
+                cout << "Enter filename to save (e.g., spectators.csv): ";
                 cin >> filename;
                 saveToFile(filename);
                 break;
             case 8:
+                cout << "Enter filename to load (e.g., spectators.csv): ";
+                cin >> filename;
+                loadFromFile(filename);
+                break;
+            case 9:
                 cout << "Thank you for using APUEC Spectator Management System!\n";
                 break;
             default:
-                cout << "Invalid choice! Please enter 1-8.\n";
+                cout << "Invalid choice! Please enter 1-9.\n";
         }
         
-        if (choice != 8) {
+        if (choice != 9) {
             cout << "\nPress Enter to continue...";
             cin.ignore();
             cin.get();
         }
         
-    } while (choice != 8);
+    } while (choice != 9);
 }
