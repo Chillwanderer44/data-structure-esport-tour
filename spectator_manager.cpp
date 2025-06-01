@@ -406,6 +406,70 @@ void SpectatorManager::saveToFile(const string& filename) {
     cout << "Data saved to " << filename << " successfully!\n";
 }
 
+void SpectatorManager::loadFromFile(const string& filename) {
+    ifstream file(filename);
+    if (!file.is_open()) {
+        cout << "Error: Unable to open file " << filename << endl;
+        return;
+    }
+    
+    string line;
+    // Skip header
+    getline(file, line);
+    
+    int loadedCount = 0;
+    while (getline(file, line)) {
+        stringstream ss(line);
+        string name, email, type, arrivalTimeStr, seatSection, isSeatedStr;
+        
+        // Parse CSV line
+        getline(ss, name, ',');
+        getline(ss, email, ',');
+        getline(ss, type, ',');
+        getline(ss, arrivalTimeStr, ',');
+        getline(ss, seatSection, ',');
+        getline(ss, isSeatedStr, ',');
+        
+        // Convert string to int
+        int arrivalTime = stoi(arrivalTimeStr);
+        bool isSeated = (isSeatedStr == "1");
+        
+        // Create spectator object
+        Spectator spectator(name, email, type, arrivalTime);
+        
+        if (isSeated && !seatSection.empty()) {
+            // Add to seated spectators
+            spectator.setSeatSection(seatSection);
+            spectator.setIsSeated(true);
+            
+            // Check if we have space
+            if (occupiedSeats < totalSeats) {
+                seatedSpectators[occupiedSeats] = spectator;
+                occupiedSeats++;
+                
+                // Update seat availability
+                if (type == "VIP") {
+                    seatStatus.vipAvailable--;
+                } else if (type == "Influencer") {
+                    seatStatus.influencerAvailable--;
+                } else {
+                    seatStatus.generalAvailable--;
+                }
+            }
+        } else {
+            // Add to waiting queue
+            waitingQueue->insert(spectator);
+        }
+        
+        loadedCount++;
+    }
+    
+    file.close();
+    cout << "Loaded " << loadedCount << " spectators from " << filename << endl;
+    cout << "- Seated: " << occupiedSeats << endl;
+    cout << "- In queue: " << waitingQueue->getSize() << endl;
+}
+
 void SpectatorManager::displayMenu() {
     cout << "\n" << string(50, '=') << "\n";
     cout << "   APUEC SPECTATOR MANAGEMENT SYSTEM\n";
@@ -417,7 +481,7 @@ void SpectatorManager::displayMenu() {
     cout << "5. Display Venue Status\n";
     cout << "6. Display System Statistics\n";
     cout << "7. Save Data to File\n";
-    cout << "8. Load Data from File\n";  // NEW OPTION
+    cout << "8. Load Data from File\n";
     cout << "9. Exit System\n";
     cout << string(50, '-') << "\n";
     cout << "Enter your choice (1-9): ";
