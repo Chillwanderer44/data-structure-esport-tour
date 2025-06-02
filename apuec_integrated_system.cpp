@@ -251,7 +251,6 @@ void APUECIntegratedSystem::handleSpectatorManagementMenu() {
     do {
         cout << "\n=== SPECTATOR MANAGEMENT SYSTEM (Task 3) ===\n";
         cout << "Data Structure Used: Priority Queue (Max Heap Implementation)\n";
-        cout << "Developer: [Your Name] - Priority Queue Specialist\n";
         cout << string(65, '-') << "\n";
         cout << "1. Register New Spectator\n";
         cout << "2. Allocate Seating (Process Priority Queue)\n";
